@@ -1,0 +1,11 @@
+start ./insercion/insmarcas.sql
+start ./insercion/inslugares.sql
+start ./insercion/insrutas.sql
+start ./insercion/inspersonas.sql
+start ./insercion/inscontratos.sql
+start ./insercion/insvehiculos.sql
+start ./insercion/insrepuestos.sql
+start ./insercion/insmantenimientos.sql
+start ./insercion/insdetalles.sql
+start ./insercion/insasignaciones.sql
+start ./insercion/insrecorridos.sql
