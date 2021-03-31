@@ -3,7 +3,7 @@
 create or replace type body obj_vehiculo as
 	-- Logic
 	member function calcular_deuda_total_vehiculo return number IS
-		v_total_deuda NUMBER;
+		v_total_deuda NUMBER := 0;
 		BEGIN
 			FOR i IN self.mantenimientos.FIRST..self.mantenimientos.LAST LOOP
 				v_total_deuda := v_total_deuda + self.mantenimientos(i).calcular_deuda_mantenimiento();

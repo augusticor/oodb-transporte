@@ -28,3 +28,14 @@ BEGIN
 	END LOOP;
 END;
 /
+
+-- Query para mostrar los detalles de todos los mantenimientos de una placa
+SELECT d.*, me.estado
+FROM DETALLES d, MANTENIMIENTOS me
+WHERE d.id_mantenimiento IN (
+							SELECT m.id_mantenimiento
+							FROM MANTENIMIENTOS m
+							WHERE m.placa LIKE 'ATW287'
+							)
+AND me.id_mantenimiento = d.id_mantenimiento
+/

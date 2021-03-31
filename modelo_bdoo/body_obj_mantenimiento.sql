@@ -3,7 +3,7 @@
 create or replace type body Obj_mantenimiento as
 	-- Logic
 	member function calcular_coste_mantenimiento return number IS
-		v_total_mantenimiento NUMBER;
+		v_total_mantenimiento NUMBER := 0;
 		BEGIN
 			SELECT SUM(valor * cantidad)
 			INTO v_total_mantenimiento
