@@ -39,3 +39,12 @@ WHERE d.id_mantenimiento IN (
 							)
 AND me.id_mantenimiento = d.id_mantenimiento
 /
+
+-- Query para mostrar la placa de los vehiculos que no tienen mantenimientos
+SELECT V.PLACA
+FROM VEHICULOS V
+WHERE V.PLACA NOT IN (
+						SELECT PLACA
+						FROM MANTENIMIENTOS
+					)
+/
