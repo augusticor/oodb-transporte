@@ -7,6 +7,10 @@
 * [¿ Cómo usar este proyecto ?](#usar-este-proyecto)
   * [Construir la base de datos](#construir-la-base-de-datos)
   * [Información de las tablas](#información-tablas)
+  * [Construir el modelo orientado a objetos](#construir-el-modelo-orientado-a-objetos)
+  * [Construye las consultas de la BDOO](construye-las-consultas-de-la-bdoo)
+  * [Prueba las consultas](#probar-las-consultas)
+  * [Utilidades](#utilidades)
 * [Integrantes del grupo](#integrantes)
 
 ## Enunciado
@@ -28,7 +32,7 @@ Se usó la base de datos Oracle, V. 11g.
 ![objetos](arquitectura.png)
 
 ## Usar este proyecto
-Para usar este proyecto primero se debe crear la estructura relacional de la base de datos, luego la estructura orientada a objetos, para luego probar el funcionamiento de las funciones solicitadas.
+Para usar este proyecto primero se debe crear la estructura relacional de la base de datos, luego la estructura orientada a objetos, y luego las consultas, para finalmente probar el funcionamiento de las funciones solicitadas.
 Como se uso la base de datos Oracle, se especificaran los detalles para la construcción usando este S.G.B.D.
 
 ### Construir la base de datos
@@ -78,14 +82,95 @@ commit;
 
 
 ### Construir el modelo orientado a objetos
-1. Construye el modelo relacional
+1. [Construye el modelo relacional](#construir-la-base-de-datos)
 
-2. Corre el script [create_model.sql](create_model.sql)
+2. Construye la BDOO, corriendo el script [create_model.sql](create_model.sql)
 ```
 start create_model.sql;
 ```
 
-3. Listo
+3. Finalmente persistir la información haciendo "commit"
+```
+commit;
+```
+
+4. Listo
+
+### Construye las consultas de la BDOO
+1. [Crea el modelo orientado a objetos](#construir-el-modelo-orientado-a-objetos)
+
+2. Crea las consultas corriendo el script [create_consultas.sql](consultas/create_consultas.sql)
+```
+start ./consultas/create_consultas.sql;
+```
+
+3. Finalmente persistir la información haciendo "commit"
+```
+commit;
+```
+
+4. Listo, puedes [probar las consultas](#probar-las-consultas)
+
+### Probar las consultas
+Luego de [Construir la base de datos](#construir-la-base-de-datos), [Construir el modelo orientado a objetos](#construir-el-modelo-orientado-a-objetos) y de [Construir las consultas de la BDOO](construye-las-consultas-de-la-bdoo), puedes probar cada una de las consultas, como se indica a continuación:
+
+Primero inicia el servicio para imprimir de **SQL PLUS**
+```
+set serveroutput on;
+```
+
+- Total de deuda que tiene un vehículo (ingresa placa).
+```
+execute total_deuda_vehiculo('placadeunvehiculo');
+```
+Ejemplo:
+```
+execute total_deuda_vehiculo('BDE948');
+R./ $ 11'339.000
+```
+
+- Cambio de estado de una factura por pago de la misma (ingresa id_mantenimiento), id_mantenimiento es un número.
+```
+execute cambiar_estado(id_mantenimiento);
+```
+Ejemplo:
+```
+execute cambiar_estado(1);
+```
+
+- Reporte total de mantenimientos de un vehículo. Se debe mostrar los detalles de cada uno
+de estos mantenimientos (ingresa la placa del vehículo). Se deben imprimir también los
+totales de cada factura a este reporte.
+```
+execute reporte_mantenimientos('placavehiculo');
+```
+Ejemplo:
+```
+execute reporte_mantenimientos('ATW287');
+```
+
+### Utilidades
+El archivo [util.sql](util.sql) contiene algunas consultas que pueden ser de utilidad para revisar lo que se ha creado o corrobar el funcionamiento de algunos procedimientos o funciones, adicionalmente si quieres eliminar algo, se explica a continuación:
+
+Si quieres eliminar todas las tuplas de la tabla **MIVEHICULO**, inicia el script [clean_model.sql](clean_model.sql)
+```
+start clean_model.sql;
+```
+
+Si lo que deseas es eliminar todo el modelo orientado a objetos, entonces inicia el script [delete_model.sql](delete_model.sql)
+```
+start delete_model.sql;
+```
+
+Si quieres eliminar todos los procedimientos encargados de las consultas, inicia el script [drop_consultas.sql](consultas/drop_consultas.sql)
+```
+start ./consultas/drop_consultas.sql;
+```
+
+Finalmente si deseas borrar todo el sistema, corre el script [borrasistema.sql](borrasistema.sql)
+```
+start borrasistema.sql;
+```
 
 ## Integrantes
 * [Oscar Rojas](https://github.com/augusticor)
