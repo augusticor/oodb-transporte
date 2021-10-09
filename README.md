@@ -8,7 +8,7 @@
   * [Construir la base de datos](#construir-la-base-de-datos)
   * [Información de las tablas](#información-tablas)
   * [Construir el modelo orientado a objetos](#construir-el-modelo-orientado-a-objetos)
-  * [Construye las consultas de la BDOO](construye-las-consultas-de-la-bdoo)
+  * [Construye las consultas de la BDOO](#construye-las-consultas-de-la-bdoo)
   * [Prueba las consultas](#probar-las-consultas)
   * [Utilidades](#utilidades)
 * [Integrantes del grupo](#integrantes)
